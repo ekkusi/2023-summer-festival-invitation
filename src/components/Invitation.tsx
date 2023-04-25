@@ -7,7 +7,7 @@ import {
   Text,
   useMediaQuery,
 } from "@chakra-ui/react";
-import { Variants } from "framer-motion";
+import { Variants, useAnimationControls } from "framer-motion";
 import { AiFillHeart } from "react-icons/ai";
 import { MotionBox, MotionText } from "./motion";
 
@@ -71,6 +71,7 @@ type InvitationProps = {
 
 function Invitation({ label }: InvitationProps) {
   const [isOpen, setIsOpen] = React.useState(false);
+  const controls = useAnimationControls();
   const [isLargerThan600] = useMediaQuery("(min-width: 600px)");
 
   const bgEnvelopeColor = "#f5edd1";
@@ -81,7 +82,8 @@ function Invitation({ label }: InvitationProps) {
   const envelopeHeight = isLargerThan600 ? "350px" : "250px";
   const tabHeight = isLargerThan600 ? "180px" : "130px";
 
-  const y = isLargerThan600 ? [-50, -300, -50] : [-25, -300, -25];
+  const y = isLargerThan600 ? [-75, -400, -75] : [-25, -300, -25];
+  const maxScale = isLargerThan600 ? 4 : 3;
 
   const envelopeLetter: Variants = {
     open: {
@@ -89,13 +91,13 @@ function Invitation({ label }: InvitationProps) {
       y,
       x: "-50%",
       // width: [150, 300, 400],
-      scale: [1, 2, 3],
+      scale: [1, 2, maxScale],
       zIndex: 3,
       transition: {
         duration: LETTER_DURATION,
-        delay: BUTTON_DURATION + TAB_DURATION / 2,
+        delay: BUTTON_DURATION + TAB_DURATION,
         zIndex: {
-          delay: BUTTON_DURATION + TAB_DURATION / 2 + LETTER_DURATION / 2,
+          delay: BUTTON_DURATION + TAB_DURATION + LETTER_DURATION / 2,
         },
         // times: [0.5, 1.0, 1.5],
       },
@@ -105,7 +107,7 @@ function Invitation({ label }: InvitationProps) {
       y,
       x: "-50%",
       // width: [400, 300, 150],
-      scale: [3, 2, 1],
+      scale: [4, 2, 1],
       zIndex: 1,
       transition: {
         duration: CLOSE_DURATION,
@@ -119,9 +121,10 @@ function Invitation({ label }: InvitationProps) {
 
   return (
     <MotionBox
-      initial="open"
+      initial="closed"
       position="relative"
-      animate={isOpen ? "open" : "closed"}
+      animate={controls}
+      // animate={isOpen ? "open" : "closed"}
       bg={bgEnvelopeColor}
       boxShadow={`0 0 40px ${shadowColor}`}
     >
@@ -149,7 +152,6 @@ function Invitation({ label }: InvitationProps) {
           width={envelopeWidth}
           height={tabHeight}
           left="50%"
-          zIndex={3}
           translateX="-50%"
           transformOrigin="top"
           style={{
@@ -180,6 +182,12 @@ function Invitation({ label }: InvitationProps) {
         />
         <MotionBox
           variants={envelopeLetter}
+          initial={{
+            scale: 1,
+            y: -25,
+            zIndex: 1,
+            x: "-50%",
+          }}
           position="absolute"
           bottom="0"
           left="50%"
@@ -204,7 +212,7 @@ function Invitation({ label }: InvitationProps) {
           }}
           zIndex="2"
           transformOrigin=""
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => controls.start("open")}
         >
           <Icon as={AiFillHeart} w={8} h={8} />
         </MotionBox>
