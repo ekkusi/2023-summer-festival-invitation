@@ -178,12 +178,11 @@ function Invitation({ label }: InvitationProps) {
           borderLeft={`calc(${envelopeWidth} / 2) solid ${envelopeCoverColor}`}
           transformOrigin="top"
         />
-        {/* <MotionBox
+        <MotionBox
           variants={envelopeLetter}
           position="absolute"
           bottom="0"
           left="50%"
-          // height={`calc(${envelopeHeight} - 10px)`}
           width="130px"
           bg="white"
           textAlign="center"
@@ -193,7 +192,7 @@ function Invitation({ label }: InvitationProps) {
           overflow="hidden"
         >
           <Image src="/invitation.jpeg" />
-        </MotionBox> */}
+        </MotionBox>
       </Box>
       <MotionBox
         variants={openButton}
