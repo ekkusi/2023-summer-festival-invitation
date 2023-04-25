@@ -70,7 +70,6 @@ type InvitationProps = {
 };
 
 function Invitation({ label }: InvitationProps) {
-  const [isOpen, setIsOpen] = React.useState(false);
   const controls = useAnimationControls();
   const [isLargerThan600] = useMediaQuery("(min-width: 600px)");
 

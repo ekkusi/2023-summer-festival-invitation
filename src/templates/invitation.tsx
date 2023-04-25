@@ -12,7 +12,6 @@ export default function InvitationTemplate({ data }: InvitationTemplateProps) {
   const { sitePage } = data;
   const invitation = sitePage?.pageContext as InvitationType | null;
   if (!invitation) throw new Error("No invitation data found");
-  console.log(invitation);
 
   return (
     <PageWrapper display="flex" alignItems="center" justifyContent="center">
@@ -33,3 +32,10 @@ export const query = graphql`
     }
   }
 `;
+
+export function Head({ data }: InvitationTemplateProps) {
+  const { sitePage } = data;
+  const invitation = sitePage?.pageContext as InvitationType | null;
+  if (!invitation) throw new Error("No invitation data found");
+  return <title>{invitation.label}</title>;
+}

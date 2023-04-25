@@ -4,7 +4,7 @@ import Invitation from "../components/Invitation";
 
 function IndexPage() {
   return (
-    <PageWrapper>
+    <PageWrapper display="flex" alignItems="center" justifyContent="center">
       <Invitation label="Testi" />
     </PageWrapper>
   );

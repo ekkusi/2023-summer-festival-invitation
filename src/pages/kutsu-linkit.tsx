@@ -68,3 +68,7 @@ function InvitationLinksPage(props: PageProps) {
 }
 
 export default InvitationLinksPage;
+
+export function Head() {
+  return <title>Kutsulinkit</title>;
+}
