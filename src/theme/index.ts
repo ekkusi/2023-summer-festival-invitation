@@ -5,7 +5,7 @@ const colors = {
   bg: "rgb(5, 53, 61)",
 };
 
-const colorScheme = "teal";
+const colorScheme = "orange";
 
 const theme = extendTheme({
   fonts: {
@@ -20,6 +20,7 @@ const theme = extendTheme({
         minHeight: "100vh",
         overflowX: "hidden",
         bg: colors.bg,
+        color: "white",
       },
       body: {
         fontSize: { base: "xl", md: "2xl" },

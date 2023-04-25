@@ -4,14 +4,5 @@ import React from "react";
 type PageWrapperProps = BoxProps;
 
 export default function PageWrapper(props: PageWrapperProps) {
-  return (
-    <Box
-      height="100vh"
-      width="100%"
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      {...props}
-    />
-  );
+  return <Box height="100vh" width="100%" {...props} />;
 }

@@ -15,7 +15,7 @@ export default function InvitationTemplate({ data }: InvitationTemplateProps) {
   console.log(invitation);
 
   return (
-    <PageWrapper>
+    <PageWrapper display="flex" alignItems="center" justifyContent="center">
       <Invitation label={invitation.label} />
     </PageWrapper>
   );
