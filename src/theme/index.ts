@@ -2,22 +2,24 @@ import { extendTheme } from "@chakra-ui/react";
 
 const colors = {
   // Custom colors here
+  bg: "rgb(5, 53, 61)",
 };
 
 const colorScheme = "teal";
 
 const theme = extendTheme({
   fonts: {
-    heading: "Oxygen",
-    body: "Raleway",
+    handwritten: "Pacifico",
   },
   styles: {
     global: () => ({
       "html, body, #root": {
+        WebkitTapHighlightColor: "transparent",
         margin: 0,
         width: "100%",
         minHeight: "100vh",
         overflowX: "hidden",
+        bg: colors.bg,
       },
       body: {
         fontSize: { base: "xl", md: "2xl" },

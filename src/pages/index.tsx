@@ -1,24 +1,13 @@
 import * as React from "react";
-import { PageProps, graphql } from "gatsby";
-import { Box, Text } from "@chakra-ui/react";
+import PageWrapper from "../components/PageWrapper";
+import Invitation from "../components/Invitation";
 
-function IndexPage({ data }: PageProps<Queries.IndexPageQuery>) {
+function IndexPage() {
   return (
-    <Box textAlign="center" pt="10">
-      <Text as="h1">{data.site?.siteMetadata?.title}</Text>
-      <Text>This is a starter for Gatsby, Chakra and Typescript</Text>
-    </Box>
+    <PageWrapper>
+      <Invitation label="Testi" />
+    </PageWrapper>
   );
 }
 
 export default IndexPage;
-
-export const query = graphql`
-  query IndexPage {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`;
