@@ -37,5 +37,13 @@ export function Head({ data }: InvitationTemplateProps) {
   const { sitePage } = data;
   const invitation = sitePage?.pageContext as InvitationType | null;
   if (!invitation) throw new Error("No invitation data found");
-  return <title>{invitation.label}</title>;
+  return (
+    <>
+      <title>{invitation.label}</title>
+      <meta
+        name="description"
+        content="Kutsu kesän ei välttämättä parhaisiin, mutta ainakin ihan kivoihin juhliin:)"
+      />
+    </>
+  );
 }
