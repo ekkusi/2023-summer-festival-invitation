@@ -193,22 +193,22 @@ function Invitation({ label }: InvitationProps) {
         >
           <Image src="/invitation.jpeg" />
         </MotionBox>
+        <MotionBox
+          variants={openButton}
+          color="pink.400"
+          position="absolute"
+          top="50%"
+          left="50%"
+          _hover={{
+            bg: "none",
+          }}
+          zIndex="2"
+          transformOrigin=""
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <Icon as={AiFillHeart} w={8} h={8} />
+        </MotionBox>
       </Box>
-      <MotionBox
-        variants={openButton}
-        color="pink.400"
-        position="absolute"
-        top="50%"
-        left="50%"
-        _hover={{
-          bg: "none",
-        }}
-        zIndex="2"
-        transformOrigin=""
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <Icon as={AiFillHeart} w={8} h={8} />
-      </MotionBox>
       {/* <Button
         position="absolute"
         bottom="0"
