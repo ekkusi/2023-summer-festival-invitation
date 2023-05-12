@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { PageProps, graphql } from "gatsby";
 import { Box, Icon, Image, Text, useMediaQuery } from "@chakra-ui/react";
 import { GiCheckMark } from "react-icons/gi";
 import { RxCross1 } from "react-icons/rx";
 import { TypeAnimation } from "react-type-animation";
+import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import dataJson from "../data.json";
 import PageWrapper from "../components/PageWrapper";
 import Invitation, { InvitationHandlers } from "../components/Invitation";
 import VaraText, { VaraTextHandlers } from "../components/VaraText";
 import { MotionBox } from "../components/motion";
+import db from "../db";
 
-type InvitationType = (typeof dataJson)[number];
+type InvitationType = (typeof dataJson)[number] & {
+  attending?: boolean;
+};
 
 type InvitationTemplateProps = PageProps<Queries.InvitationTemplateQuery>;
 
@@ -22,16 +26,50 @@ export default function InvitationTemplate({ data }: InvitationTemplateProps) {
   const [animationState, setAnimationState] = React.useState<"closed" | "open">(
     "closed"
   );
+  const [error, setError] = React.useState<string | null>(null);
+  const [loading, setLoading] = React.useState(true);
   const [attendance, setAttendance] = React.useState<boolean | null>(null);
-  const [state, setState] = React.useState<"answered" | "not-answered">(
-    "not-answered"
-  );
+  const [answerState, setAnswerState] = React.useState<
+    "answered" | "not-answered" | null
+  >(null);
   const invitationRef = React.useRef<InvitationHandlers>(null);
   const answerRef = React.useRef<InvitationHandlers>(null);
   const firstTextRef = React.useRef<VaraTextHandlers>(null);
   const secondTextRef = React.useRef<VaraTextHandlers>(null);
 
   if (!invitation) throw new Error("No invitation data found");
+
+  const getAnswer = async () => {
+    const docRef = doc(db, "answers", invitation.id);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      const snapData = docSnap.data();
+      return snapData as InvitationType;
+    }
+    return null;
+  };
+
+  const addAnswer = async (attending: boolean) => {
+    const docRef = doc(db, "answers", invitation.id);
+    await setDoc(docRef, { ...invitation, attending });
+  };
+
+  useEffect(() => {
+    getAnswer()
+      .then((answer) => {
+        const newAttendance = answer?.attending || null;
+        setAttendance(newAttendance);
+        setAnswerState(newAttendance === null ? "not-answered" : "answered");
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+        setError(
+          "Jotakin jännää tapahtui... Voisitko ilmottaa Ekelle kiitos..."
+        );
+      });
+  }, []);
 
   const invitationAnimationEnd = () => {
     if (!invitationRef.current) return;
@@ -40,19 +78,24 @@ export default function InvitationTemplate({ data }: InvitationTemplateProps) {
       firstTextRef.current?.play();
       secondTextRef.current?.play();
     } else {
-      setState("answered");
+      setAnswerState("answered");
     }
   };
 
   const onAttendanceChanged = (attending: boolean) => {
     setAttendance(attending);
     invitationRef.current?.setState("closed");
+    try {
+      addAnswer(attending);
+    } catch (e) {
+      setError("Jotakin jännää tapahtui... Voisitko ilmottaa Ekelle kiitos...");
+    }
   };
 
   const answerAnimationEnd = () => {
     if (!answerRef.current) return;
     if (answerRef.current.getState() === "closed") {
-      setState("not-answered");
+      setAnswerState("not-answered");
       invitationRef.current?.setState("open");
       setAnimationState("open");
     }
@@ -64,9 +107,54 @@ export default function InvitationTemplate({ data }: InvitationTemplateProps) {
 
   const initialAnimationX = isLargerThan600 ? 1500 : 500;
 
+  const loadingAnimationDuration = 300;
+
+  if (error) {
+    return (
+      <PageWrapper
+        noAnimation
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Text as="span" mx="3" textAlign="center">
+          {error}
+        </Text>
+      </PageWrapper>
+    );
+  }
+
+  if (loading || !answerState)
+    return (
+      <PageWrapper
+        noAnimation
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Text as="span" fontFamily="handwritten">
+          Ladataan
+        </Text>
+        <TypeAnimation
+          sequence={[
+            ".",
+            loadingAnimationDuration,
+            "..",
+            loadingAnimationDuration,
+            "...",
+            loadingAnimationDuration,
+            "..",
+            loadingAnimationDuration,
+          ]}
+          cursor={false}
+          repeat={Infinity}
+        />
+      </PageWrapper>
+    );
+
   return (
     <PageWrapper display="flex" alignItems="center" justifyContent="center">
-      {state === "not-answered" ? (
+      {answerState === "not-answered" ? (
         <MotionBox
           key="invitation"
           initial={{

@@ -1,5 +1,21 @@
 [
   {
+    "id": "test-1",
+    "label": "Testi"
+  },
+  {
+    "id": "test-2",
+    "label": "Testi"
+  },
+  {
+    "id": "test-3",
+    "label": "Testi"
+  },
+  {
+    "id": "test-4",
+    "label": "Testi"
+  },
+  {
     "id": "milja",
     "label": "Miljalle"
   },

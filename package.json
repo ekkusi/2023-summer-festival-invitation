@@ -21,6 +21,7 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@fontsource/pacifico": "^4.5.9",
+    "firebase": "^9.21.0",
     "framer-motion": "^10.12.4",
     "gatsby": "^5.9.0",
     "gatsby-plugin-manifest": "^5.9.0",
