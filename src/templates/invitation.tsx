@@ -58,7 +58,7 @@ export default function InvitationTemplate({ data }: InvitationTemplateProps) {
   useEffect(() => {
     getAnswer()
       .then((answer) => {
-        const newAttendance = answer?.attending || null;
+        const newAttendance = answer?.attending ?? null;
         setAttendance(newAttendance);
         setAnswerState(newAttendance === null ? "not-answered" : "answered");
         setLoading(false);
