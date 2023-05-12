@@ -112,7 +112,7 @@ const Invitation = React.forwardRef<InvitationHandlers, InvitationProps>(
     const envelopeHeight = isLargerThan600 ? "350px" : "250px";
     const tabHeight = isLargerThan600 ? "180px" : "130px";
 
-    const y = isLargerThan600 ? [-75, -400, -75] : [-25, -300, -25];
+    const y = isLargerThan600 ? [-75, -400, -75] : [-50, -300, -50];
     const maxScale = isLargerThan600 ? 4 : 3;
 
     const setState = (state: "open" | "closed") => {
