@@ -3,7 +3,6 @@ import { PageProps, graphql } from "gatsby";
 import { Box, Icon, Image, Text, useMediaQuery } from "@chakra-ui/react";
 import { GiCheckMark } from "react-icons/gi";
 import { RxCross1 } from "react-icons/rx";
-import { TypeAnimation } from "react-type-animation";
 import dataJson from "../data.json";
 import PageWrapper from "../components/PageWrapper";
 import Invitation, { InvitationHandlers } from "../components/Invitation";
@@ -24,7 +23,7 @@ export default function InvitationTemplate({ data }: InvitationTemplateProps) {
   );
   const [attendance, setAttendance] = React.useState<boolean>(false);
   const [state, setState] = React.useState<"answered" | "not-answered">(
-    "answered"
+    "not-answered"
   );
   const invitationRef = React.useRef<InvitationHandlers>(null);
   const answerRef = React.useRef<InvitationHandlers>(null);
@@ -40,14 +39,11 @@ export default function InvitationTemplate({ data }: InvitationTemplateProps) {
       firstTextRef.current?.play();
       secondTextRef.current?.play();
     } else {
-      console.log("animation end and invitation closed");
-
       setState("answered");
     }
   };
 
   const onAttendanceChanged = (attending: boolean) => {
-    console.log("onAttendanceChanged", attending);
     setAttendance(attending);
     invitationRef.current?.setState("closed");
   };
@@ -61,7 +57,6 @@ export default function InvitationTemplate({ data }: InvitationTemplateProps) {
   };
 
   const onChangeAnswerClicked = () => {
-    console.log("onChangeAnswerClicked");
     answerRef.current?.setState("closed");
   };
 
