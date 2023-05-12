@@ -44,7 +44,7 @@
     "label": "Jukalle"
   },
   {
-    "id": "leo-l",
+    "id": "parempi-leo",
     "label": "Leolle"
   },
   {
@@ -122,6 +122,10 @@
   {
     "id": "ella",
     "label":"Ellalle"
+  },
+  {
+    "id": "mikke",
+    "label":"Mikelle"
   },
   {
     "id": "terhi",

@@ -4,7 +4,7 @@ import { Box, Icon, Image, Text, useMediaQuery } from "@chakra-ui/react";
 import { GiCheckMark } from "react-icons/gi";
 import { RxCross1 } from "react-icons/rx";
 import { TypeAnimation } from "react-type-animation";
-import { collection, doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import dataJson from "../data.json";
 import PageWrapper from "../components/PageWrapper";
 import Invitation, { InvitationHandlers } from "../components/Invitation";
