@@ -11,6 +11,7 @@ type VaraTextProps = Omit<TextProps, "children" | "id"> & {
   text: string;
   id: string;
   fontSize?: number;
+  autoPlay?: boolean;
   delay?: number;
 };
 
@@ -19,7 +20,7 @@ export type VaraTextHandlers = {
 };
 
 const VaraText = forwardRef<VaraTextHandlers, VaraTextProps>(
-  ({ text, id, fontSize = 5, delay, ...rest }, ref) => {
+  ({ text, id, fontSize = 5, delay, autoPlay = false, ...rest }, ref) => {
     const [vara, setVara] = useState<any | null>(null);
     useEffect(() => {
       const newVara = new Vara(
@@ -34,12 +35,12 @@ const VaraText = forwardRef<VaraTextHandlers, VaraTextProps>(
           },
         ],
         {
-          autoAnimation: false,
+          autoAnimation: autoPlay,
           duration: 500,
         }
       );
       setVara(newVara);
-    }, []);
+    }, [autoPlay]);
     useImperativeHandle(ref, () => ({
       play: () => {
         vara?.playAll();

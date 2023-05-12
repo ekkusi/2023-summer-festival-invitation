@@ -3,6 +3,7 @@ import { PageProps, graphql } from "gatsby";
 import { Box, Icon, Image, Text, useMediaQuery } from "@chakra-ui/react";
 import { GiCheckMark } from "react-icons/gi";
 import { RxCross1 } from "react-icons/rx";
+import { TypeAnimation } from "react-type-animation";
 import dataJson from "../data.json";
 import PageWrapper from "../components/PageWrapper";
 import Invitation, { InvitationHandlers } from "../components/Invitation";
@@ -21,7 +22,7 @@ export default function InvitationTemplate({ data }: InvitationTemplateProps) {
   const [animationState, setAnimationState] = React.useState<"closed" | "open">(
     "closed"
   );
-  const [attendance, setAttendance] = React.useState<boolean>(false);
+  const [attendance, setAttendance] = React.useState<boolean | null>(null);
   const [state, setState] = React.useState<"answered" | "not-answered">(
     "not-answered"
   );
@@ -53,6 +54,7 @@ export default function InvitationTemplate({ data }: InvitationTemplateProps) {
     if (answerRef.current.getState() === "closed") {
       setState("not-answered");
       invitationRef.current?.setState("open");
+      setAnimationState("open");
     }
   };
 
@@ -98,7 +100,6 @@ export default function InvitationTemplate({ data }: InvitationTemplateProps) {
                 as="a"
                 display="inline-flex"
                 color="black"
-                cursor="pointer"
                 marginRight="12px"
                 onClick={() => onAttendanceChanged(true)}
               >
@@ -116,6 +117,7 @@ export default function InvitationTemplate({ data }: InvitationTemplateProps) {
                 </MotionBox>
                 <VaraText
                   ref={firstTextRef}
+                  autoPlay={attendance !== null}
                   id="text1"
                   text="Tulen"
                   delay={200}
@@ -125,7 +127,6 @@ export default function InvitationTemplate({ data }: InvitationTemplateProps) {
                 as="a"
                 display="inline-flex"
                 color="black"
-                cursor="pointer"
                 onClick={() => onAttendanceChanged(false)}
               >
                 <MotionBox
@@ -146,6 +147,7 @@ export default function InvitationTemplate({ data }: InvitationTemplateProps) {
                 <VaraText
                   ref={secondTextRef}
                   id="text2"
+                  autoPlay={attendance !== null}
                   text="En tule :("
                   delay={1200}
                 />
@@ -177,14 +179,30 @@ export default function InvitationTemplate({ data }: InvitationTemplateProps) {
               src={attendance ? "/answer-yes.jpg" : "/answer-no.jpg"}
               mb="3"
             />
-            <Text>{attendance ? "Jee :)" : "Höh :("}</Text>
+            <Box height="30px">
+              <TypeAnimation
+                wrapper="div"
+                sequence={[2500, "You chose:"]}
+                speed={60}
+                cursor={false}
+              />
+              <TypeAnimation
+                wrapper="div"
+                speed={60}
+                sequence={[3700, attendance ? "Greatly" : "Poorly"]}
+                cursor={false}
+              />
+            </Box>
             <Box
               position="absolute"
               bottom="0"
-              left="1"
+              left="0"
               width="100%"
-              fontSize="5px"
+              fontSize="4.5px"
             >
+              <Text as="span" mr="1px">
+                Vastauksenne on tallennettu.
+              </Text>
               <Text
                 as="a"
                 color="gray.700"
@@ -193,10 +211,6 @@ export default function InvitationTemplate({ data }: InvitationTemplateProps) {
               >
                 Muokkaa vastausta
               </Text>
-              {/* <TypeAnimation
-                sequence={[3000, "Muokkaa vastausta:"]}
-                cursor={false}
-              /> */}
             </Box>
           </Invitation>
         </MotionBox>

@@ -30,6 +30,7 @@ const theme = extendTheme({
       },
       a: {
         color: colorScheme,
+        cursor: "pointer",
         _hover: {
           opacity: 0.7,
         },
