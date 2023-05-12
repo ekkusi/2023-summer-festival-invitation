@@ -67,9 +67,11 @@ const openButton: Variants = {
 
 type InvitationProps = {
   label: string;
+  children: React.ReactNode;
+  onAnimationEnd?: () => void;
 };
 
-function Invitation({ label }: InvitationProps) {
+function Invitation({ label, children, onAnimationEnd }: InvitationProps) {
   const controls = useAnimationControls();
   const [isLargerThan600] = useMediaQuery("(min-width: 600px)");
 
@@ -126,6 +128,7 @@ function Invitation({ label }: InvitationProps) {
       // animate={isOpen ? "open" : "closed"}
       bg={bgEnvelopeColor}
       boxShadow={`0 0 40px ${shadowColor}`}
+      onAnimationComplete={onAnimationEnd}
     >
       <Box
         position="relative"
@@ -194,11 +197,12 @@ function Invitation({ label }: InvitationProps) {
           bg="white"
           textAlign="center"
           boxShadow={`0 0 5px ${shadowColor}`}
-          py="5"
+          py="2"
+          pb="5"
           px="3"
           overflow="hidden"
         >
-          <Image src="/invitation.jpeg" />
+          {children}
         </MotionBox>
         <MotionBox
           variants={openButton}
