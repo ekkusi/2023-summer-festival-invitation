@@ -1,19 +1,12 @@
 import * as React from "react";
-import {
-  Box,
-  Button,
-  Icon,
-  Image,
-  Text,
-  useMediaQuery,
-} from "@chakra-ui/react";
+import { Box, Icon, Text, useMediaQuery } from "@chakra-ui/react";
 import {
   TargetAndTransition,
   Variants,
   useAnimationControls,
 } from "framer-motion";
 import { AiFillHeart } from "react-icons/ai";
-import { MotionBox, MotionText } from "./motion";
+import { MotionBox } from "./motion";
 
 const BUTTON_DURATION = 0.3;
 const TAB_DURATION = 0.5;

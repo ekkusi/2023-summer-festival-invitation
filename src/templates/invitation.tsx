@@ -11,6 +11,7 @@ import Invitation, { InvitationHandlers } from "../components/Invitation";
 import VaraText, { VaraTextHandlers } from "../components/VaraText";
 import { MotionBox } from "../components/motion";
 import db from "../db";
+import LoadingPage from "../components/LoadingPage";
 
 type InvitationType = (typeof dataJson)[number] & {
   attending?: boolean;
@@ -107,8 +108,6 @@ export default function InvitationTemplate({ data }: InvitationTemplateProps) {
 
   const initialAnimationX = isLargerThan600 ? 1500 : 500;
 
-  const loadingAnimationDuration = 300;
-
   if (error) {
     return (
       <PageWrapper
@@ -124,33 +123,7 @@ export default function InvitationTemplate({ data }: InvitationTemplateProps) {
     );
   }
 
-  if (loading || !answerState)
-    return (
-      <PageWrapper
-        noAnimation
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Text as="span" fontFamily="handwritten">
-          Ladataan
-        </Text>
-        <TypeAnimation
-          sequence={[
-            ".",
-            loadingAnimationDuration,
-            "..",
-            loadingAnimationDuration,
-            "...",
-            loadingAnimationDuration,
-            "..",
-            loadingAnimationDuration,
-          ]}
-          cursor={false}
-          repeat={Infinity}
-        />
-      </PageWrapper>
-    );
+  if (loading || !answerState) return <LoadingPage />;
 
   return (
     <PageWrapper display="flex" alignItems="center" justifyContent="center">

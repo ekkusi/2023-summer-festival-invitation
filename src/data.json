@@ -1,150 +1,187 @@
 [
   {
     "id": "test-1",
-    "label": "Testi"
+    "label": "Testi 1",
+    "name": "Testi 1"
   },
   {
     "id": "test-2",
-    "label": "Testi"
+    "label": "Testi 2",
+    "name": "Testi 2"
   },
   {
     "id": "test-3",
-    "label": "Testi"
+    "label": "Testi 3",
+    "name": "Testi 3"
   },
   {
     "id": "test-4",
-    "label": "Testi"
+    "label": "Testi 4",
+    "name": "Testi 4"
   },
   {
     "id": "milja",
-    "label": "Miljalle"
+    "label": "Miljalle",
+    "name": "Milja"
   },
   {
     "id": "leevi",
-    "label": "Leeville"
+    "label": "Leeville",
+    "name": "Leevi"
   },
   {
     "id": "maija",
-    "label": "Maijalle"
+    "label": "Maijalle",
+    "name": "Maija"
   },
   {
     "id": "aku",
-    "label": "Akulle"
+    "label": "Akulle",
+    "name": "Aku"
   },
   {
     "id": "rasmus",
-    "label": "Rasmukselle"
+    "label": "Rasmukselle",
+    "name": "Rasmus"
   },
   {
     "id": "veera",
-    "label": "Veeralle"
+    "label": "Veeralle",
+    "name": "Veera"
   },
   {
     "id": "jukka",
-    "label": "Jukalle"
+    "label": "Jukalle",
+    "name": "Jukka"
   },
   {
     "id": "parempi-leo",
-    "label": "Leolle"
+    "label": "Leolle",
+    "name": "Parempi Leo"
   },
   {
     "id": "iina",
-    "label":"Iinalle"
+    "label": "Iinalle",
+    "name": "Iina"
   },
   {
     "id": "artte",
-    "label":"Artelle"
+    "label": "Artelle",
+    "name": "Artte"
   },
   {
     "id": "onni",
-    "label":"Onnille"
+    "label": "Onnille",
+    "name": "Onni"
   },
   {
     "id": "eetu",
-    "label":"Eetulle"
+    "label": "Eetulle",
+    "name": "Eetu"
   },
   {
     "id": "netta",
-    "label":"Netalle"
+    "label": "Netalle",
+    "name": "Netta"
   },
   {
     "id": "annukka",
-    "label":"Annukalle"
+    "label": "Annukalle",
+    "name": "Annukka"
   },
   {
     "id": "napu",
-    "label":"Napulle"
+    "label": "Napulle",
+    "name": "Napu"
   },
   {
     "id": "henni",
-    "label":"Hennille"
+    "label": "Hennille",
+    "name": "Henni"
   },
   {
     "id": "oona",
-    "label":"Oonalle"
+    "label": "Oonalle",
+    "name": "Oona"
   },
   {
     "id": "tiitu",
-    "label":"Tiitulle"
+    "label": "Tiitulle",
+    "name": "Tiitu"
   },
   {
     "id": "tiia",
-    "label": "Tiialle"
+    "label": "Tiialle",
+    "name": "Tiia"
   },
   {
     "id": "mika",
-    "label":"Mikalle"
+    "label": "Mikalle",
+    "name": "Mika"
   },
   {
     "id": "miika",
-    "label":"Miikalle"
+    "label": "Miikalle",
+    "name": "Miika"
   },
   {
     "id": "leo-w",
-    "label":"Leolle"
+    "label": "Leolle",
+    "name": "Leo W"
   },
   {
     "id": "pihla",
-    "label":"Pihlalle"
+    "label": "Pihlalle",
+    "name": "Pihla"
   },
   {
     "id": "juho",
-    "label":"Juholle"
+    "label": "Juholle",
+    "name": "Juho"
   },
   {
     "id": "iiris",
-    "label":"Iipolle"
+    "label": "Iipolle",
+    "name": "Iiris"
   },
   {
     "id": "noora",
-    "label":"Nooralle"
+    "label": "Nooralle",
+    "name": "Noora"
   },
   {
     "id": "ella",
-    "label":"Ellalle"
+    "label": "Ellalle",
+    "name": "Ella"
   },
   {
     "id": "mikke",
-    "label":"Mikelle"
+    "label": "Mikelle",
+    "name": "Mikke"
   },
   {
     "id": "terhi",
-    "label":"Terhille"
+    "label": "Terhille",
+    "name": "Terhi"
   },
   {
     "id": "elisa",
-    "label":"Elisalle"
+    "label": "Elisalle",
+    "name": "Elisa"
   },
   {
     "id": "sanni",
-    "label":"Sannille"
+    "label": "Sannille",
+    "name": "Sanni"
   },
   {
     "id": "kalle",
-    "label":"Kallelle"
+    "label": "Kallelle",
+    "name": "Kalle"
   },
   {
     "id": "jaakko",
-    "label":"Jaakolle"
+    "label": "Jaakolle",
+    "name": "Jaakko"
   }
 ]
