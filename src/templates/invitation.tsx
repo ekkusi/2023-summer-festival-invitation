@@ -161,7 +161,7 @@ export default function InvitationTemplate({ data }: InvitationTemplateProps) {
                 as="a"
                 display="inline-flex"
                 color="black"
-                marginRight="12px"
+                marginRight="5px"
                 onClick={() => onAttendanceChanged(true)}
               >
                 <MotionBox

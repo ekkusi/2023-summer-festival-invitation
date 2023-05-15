@@ -20,12 +20,12 @@ export type VaraTextHandlers = {
 };
 
 const VaraText = forwardRef<VaraTextHandlers, VaraTextProps>(
-  ({ text, id, fontSize = 5, delay, autoPlay = false, ...rest }, ref) => {
+  ({ text, id, fontSize = 10, delay, autoPlay = false, ...rest }, ref) => {
     const [vara, setVara] = useState<any | null>(null);
     useEffect(() => {
       const newVara = new Vara(
         `#${id}`,
-        "https://raw.githubusercontent.com/akzhy/Vara/master/fonts/Pacifico/PacificoSLO.json",
+        "https://raw.githubusercontent.com/akzhy/Vara/master/fonts/Satisfy/SatisfySL.json",
         [
           {
             text,
