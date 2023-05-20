@@ -250,7 +250,7 @@ export default function InvitationTemplate({ data }: InvitationTemplateProps) {
               <TypeAnimation
                 wrapper="div"
                 speed={60}
-                sequence={[3700, attendance ? "Greatly" : "Poorly"]}
+                sequence={[3700, attendance ? "Wisely" : "Poorly"]}
                 cursor={false}
               />
             </Box>
