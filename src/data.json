@@ -183,5 +183,15 @@
     "id": "jaakko",
     "label": "Jaakolle",
     "name": "Jaakko"
+  },
+  {
+    "id": "inka",
+    "label": "Inkalle",
+    "name": "Inka"
+  },
+  {
+    "id": "eerik",
+    "label": "Eerikille",
+    "name": "Eerik"
   }
 ]
