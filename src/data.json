@@ -193,5 +193,15 @@
     "id": "eerik",
     "label": "Eerikille",
     "name": "Eerik"
+  },
+  {
+    "id": "s-k",
+    "label": "S-K:lle",
+    "name": "S-K"
+  },
+  {
+    "id": "iida",
+    "label": "Iidalle",
+    "name": "Iida"
   }
 ]
